@@ -30,10 +30,11 @@ use warnings;
 
 use base qw( WWW::Shorten::generic Exporter );
 our @EXPORT = qw(makeashorterlink makealongerlink);
-our $VERSION = '1.91';
+our $VERSION = '2.00';
 
 use Carp;
 use URI;
+use HTTP::Request::Common 'POST';
 
 =head1 Functions
 
@@ -45,18 +46,26 @@ list context, then it will return both the Snip URL and the password.
 
 =cut
 
-sub makeashorterlink ($;%)
-{
-    my $url = shift or croak 'No URL passed to makeashorterlink';
-    my $ua = __PACKAGE__->ua();
-    my ($nick, $pass) = @_;
-    my $snipurl = "http://snipurl.com/site/snip?r=simple&link=$url";
-    $snipurl .= "&snipnick=$nick" if defined $nick;
-    $snipurl .= "&snippk=$pass" if defined $pass;
-    my $resp = $ua->get($snipurl);
+sub makeashorterlink {
+  my $url = shift or croak 'No URL passed to makeashorterlink';
+  my $ua = __PACKAGE__->ua();
 
-    return unless $resp->is_success;
-    return $resp->content;
+  my $snipurl = 'http://snipurl.com/site/index';
+
+  my $req = POST $snipurl,
+    [
+     url => $url,
+    ];
+
+  my $resp = $ua->request($req);
+
+  return unless $resp->is_success;
+
+  if ($resp->content =~ m|<input class="snipped textsnipped" type="text" value="(http://snipurl.com/\w+)"|) {
+    return $1;
+  }
+
+  return;
 }
 
 =head2 makealongerlink
@@ -69,24 +78,19 @@ If anything goes wrong, then either function will return C<undef>.
 
 =cut
 
-sub makealongerlink ($)
-{
-    my $code = shift 
-	or croak 'No SnipURL key / URL passed to makealongerlink';
-    my $ua = __PACKAGE__->ua();
+sub makealongerlink {
+  my $code = shift
+    or croak 'No SnipURL key / URL passed to makealongerlink';
+  my $ua = __PACKAGE__->ua();
 
-    $code =~ s{^ http:// .* / }{}x;
-    my $snipurl_url = URI->new('http://snipurl.com/resolveurl');
-    $snipurl_url->query_form(
-	id => $code,
-    );
+  unless ($code =~ m|^http://|) {
+    $code = "http://snipurl.com/$code";
+  }
 
-    my $resp = $ua->get($snipurl_url);
-    return undef unless $resp->is_success;
+  my $resp = $ua->get($code);
+  return unless $resp->is_redirect;
 
-    my $content = $resp->content;
-    return undef if $content eq 'ERROR';
-    return $content;
+  return $resp->header('Location');
 }
 
 1;
@@ -103,7 +107,9 @@ See the main L<WWW::Shorten> docs.
 
 =head1 AUTHOR
 
-Iain Truskett <spoon@cpan.org>
+Dave Cross <dave@mag-sol.com>
+
+Original author Shashank Tripathi <shank@shank.com>.
 
 =head1 SEE ALSO
 
