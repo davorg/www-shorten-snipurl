@@ -61,7 +61,7 @@ sub makeashorterlink {
 
   return unless $resp->is_success;
 
-  if ($resp->content =~ m|<input class="snipped textsnipped" type="text" value="(http://snipurl.com/\w+)"|) {
+  if ($resp->content =~ m|<input name="SNIPPED" class="snipped textsnipped" type="text" value="(http://snipurl.com/\w+)"|) {
     return $1;
   }
 
