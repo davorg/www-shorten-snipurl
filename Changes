@@ -2,10 +2,6 @@
     - Cleaned up a bit
     - Standardized documentation a bit. Made sure links were present
     - added contributors
-    - removed function prototypes
-    - stopped testing since shorl.com doesn't allow repeat requests and no API
-    - document that you shouldn't use shorl.com since there's no API
-    - fixed up scraping regex a bit
 
 2.01    2015-07-18
     - Fixed tests.

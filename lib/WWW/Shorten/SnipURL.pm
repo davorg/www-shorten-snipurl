@@ -49,56 +49,68 @@ sub makealongerlink {
 
 =head1 NAME
 
-WWW::Shorten::SnipURL - Perl interface to SnipURL.com
+WWW::Shorten::SnipURL - Perl interface to L<http://SnipURL.com>
 
 =head1 SYNOPSIS
 
-  use WWW::Shorten::SnipURL;
+  use strict;
+  use warnings;
 
-  use WWW::Shorten 'SnipURL';
+  use WWW::Shorten 'SnipURL'; # recommended
+  # use WWW::Shorten::SnipURL; # also available
 
-  $short_url = makeashorterlink($long_url);
+  my $long_url = 'http://www.foo.com/bar/';
+  my $short_url = makeashorterlink($long_url);
 
   $long_url  = makealongerlink($short_url);
 
 =head1 DESCRIPTION
 
-A Perl interface to the web service SnipURL.com. SnipURL maintains a
+A Perl interface to the web service L<http://SnipURL.com>. The service maintains a
 database of long URLs, each of which has a unique identifier or
-nickname. For more features, please visit http://snipurl.com/features
+nickname. For more features, please visit L<http://snipurl.com/features>.
 
 =head1 Functions
 
+L<WWW::Shorten::SnipURL> makes the following functions available.
+
 =head2 makeashorterlink
 
-The function C<makeashorterlink> will call the SnipURL web site passing it
-your long URL and will return the shorter SnipURL version. If used in a
-list context, then it will return both the Snip URL and the password.
+  my $short = makeashorterlink('http://www.example.com/');
+
+The function C<makeashorterlink> will call use the web service, passing it
+your long URL and will return the shorter version.
 
 =head2 makealongerlink
 
+  my $long = makealongerlink('ablkjadf2314sfd');
+  my $long = makealongerlink('http://snipurl.com/ablkjadf2314sfd');
+
 The function C<makealongerlink> does the reverse. C<makealongerlink>
-will accept as an argument either the full Snip URL or just the
-SnipURL identifier.
+will accept as an argument either the full URL or just the identifier.
 
 If anything goes wrong, then either function will return C<undef>.
 
-=head2 EXPORT
+=head1 AUTHOR
 
-makeashorterlink, makealongerlink
+Shashank Tripathi <shank@shank.com>
 
-=head1 SUPPORT, LICENCE, THANKS and SUCH
+=head1 CONTRIBUTORS
+
+=over
+
+=item Chase Whitener C<capoeirab@cpan.org> -- Current maintainer
+
+=item Dave Cross C<dave@perlhacks.com>
+
+=back
+
+=head1 COPYRIGHT AND LICENSE
 
 See the main L<WWW::Shorten> docs.
 
-=head1 AUTHOR
-
-Dave Cross <dave@mag-sol.com>
-
-Original author Shashank Tripathi <shank@shank.com>.
-
 =head1 SEE ALSO
 
-L<WWW::Shorten>, L<perl>, L<http://snipurl.com/>
+L<WWW::Shorten>, L<http://shorl.com/>
 
 =cut
