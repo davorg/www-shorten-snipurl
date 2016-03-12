@@ -1,12 +1,10 @@
-WWW-Shorten-SnipURL*.tar.gz
-WWW-Shorten-SnipURL*/
+WWW-Shorten-Shorl*.tar.gz
+WWW-Shorten-Shorl*/
 Build
-Changes
-META.json
 META.yml
 MYMETA.json
 MYMETA.yml
-Makefile.PL
 _build/
 blib/
 cover_db/
+.build/
