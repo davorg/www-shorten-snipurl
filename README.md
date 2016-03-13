@@ -1,6 +1,6 @@
 # NAME
 
-WWW::Shorten::SnipURL - Perl interface to [http://SnipURL.com](http://snipurl.com)
+WWW::Shorten::SnipURL  - [![Build Status](https://travis-ci.org/p5-shorten/www-shorten-snipurl.svg?branch=master)](https://travis-ci.org/p5-shorten/www-shorten-snipurl)
 
 # SYNOPSIS
 
