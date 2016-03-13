@@ -1,23 +1,54 @@
-use Test::More tests => 7;
+use strict;
+use warnings;
+use Test::More;
+use Try::Tiny qw(try catch);
 
-BEGIN { use_ok WWW::Shorten::SnipURL };
+BEGIN { use_ok('WWW::Shorten::SnipURL') or BAIL_OUT("Can't use!") };
+can_ok('WWW::Shorten::SnipURL', qw(makealongerlink makeashorterlink));
+can_ok('main', qw(makealongerlink makeashorterlink));
 
 my $url = 'http://code.mag-sol.com/WWW-Shorten/WWW-Shorten.1.95.tar.gz';
-my $code;
-my $prefix_RE = qr{http://sn(?:ip)?url\.com/};
 my $prefix = 'http://snipurl.com/';
-my $shortened = makeashorterlink($url);
 
-if ($shortened =~ m|\Q$prefix\E(\w+)|) {
-  $code = $1;
+{ # blank call errors
+    my $err = try { makeashorterlink() } catch { "no dice: $_" };
+    like($err, qr/^no dice/, 'makeashorterlink: error on empty call');
+    $err = undef;
+
+    $err = try { makeashorterlink() } catch { "no dice: $_" };
+    like($err, qr/^no dice/, 'makealongerlink: error on empty call');
 }
 
-like ( $shortened, qr/$prefix_RE$code/, 'make it shorter');
-is ( makealongerlink($prefix.$code), $url, 'make it longer');
-is ( makealongerlink($code), $url, 'make it longer by Id',);
-is ( makealongerlink($shortened), $url, 'make it long with what we were given');
+SKIP: {
+    skip "Can't run live tests", 10;
+    my $err;
+    my $shortened = try { makeashorterlink($url) } catch { $err=$_; undef };
+    is($err,undef, "makeashorterlink: no errors");
+    skip "Got an error trying to shorten", 9 if $err;
+    ok($shortened, "makeashorterlink: got a response");
+    skip "Got no shortened response", 8 unless $shortened;
+    like($shortened, qr{^http://sn(?:ip)?url\.com/\w+$}, 'makeashorterlink: good url');
 
-eval { &makeashorterlink() };
-ok($@);
-eval { &makealongerlink() };
-ok($@);
+    my $code;
+    if ($shortened =~ m{^http://sn(?:ip)?url\.com/(\w+)$}) {
+        $code = $1;
+    }
+    ok($code, "makeashorterlink: got a short code");
+
+    $err = undef;
+    my $longer = try { makealongerlink($prefix.$code) } catch { $err=$_; undef };
+    is($err, undef, "makealongerlink: whole - no errors");
+    is($longer,$url, "makealongerlink: whole - got back the URL");
+
+    $err = undef; $longer = undef;
+    $longer = try { makealongerlink($code) } catch { $err=$_; undef };
+    is($err, undef, "makealongerlink: code - no errors");
+    is($longer,$url, "makealongerlink: code - got back the URL");
+
+    $err = undef; $longer = undef;
+    $longer = try { makealongerlink($shortened) } catch { $err=$_; undef };
+    is($err, undef, "makealongerlink: shortened - no errors");
+    is($longer,$url, "makealongerlink: shortened - got back the URL");
+}
+
+done_testing();

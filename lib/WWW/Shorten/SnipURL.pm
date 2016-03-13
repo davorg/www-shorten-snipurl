@@ -17,7 +17,7 @@ $VERSION = eval $VERSION;
 sub makeashorterlink {
     my $url     = shift or Carp::croak('No URL passed to makeashorterlink');
     my $ua      = __PACKAGE__->ua();
-    my $snipurl = 'http://snipurl.com/site/index';
+    my $snipurl = 'http://wwww.snipurl.com/site/index';
     my $req     = POST $snipurl, [url => $url,];
     my $resp
         = try { return $ua->request($req); } catch { warn $_; return undef };
@@ -65,6 +65,14 @@ WWW::Shorten::SnipURL - Perl interface to L<http://SnipURL.com>
   $long_url  = makealongerlink($short_url);
 
 =head1 DESCRIPTION
+
+B<WARNING:> L<http://snipurl.com> does not provide an API.  We must scrape the
+resulting HTML.
+
+* Also, their service has been up and down quite a bit lately.  We have disabled
+live tests due to this.
+
+* You have been warned.  We suggest using another L<WWW::Shorten> service.
 
 A Perl interface to the web service L<http://SnipURL.com>. The service maintains a
 database of long URLs, each of which has a unique identifier or

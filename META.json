@@ -1,5 +1,5 @@
 {
-   "abstract" : "Perl interface to SnipURL.com",
+   "abstract" : "Perl interface to L<http://SnipURL.com>",
    "author" : [
       "Shashank Tripathi <shank@shank.com>"
    ],

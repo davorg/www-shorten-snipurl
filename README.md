@@ -19,6 +19,12 @@ $long_url  = makealongerlink($short_url);
 
 # DESCRIPTION
 
+**WARNING:** [http://shorl.com](http://shorl.com) does not provide an API.  We must scrape the
+resulting HTML.
+
+- Also, their service has been up and down quite a bit lately.  We have disabled live tests due to this.
+- You have been warned.  We suggest using another [WWW::Shorten](https://metacpan.org/pod/WWW::Shorten) service.
+
 A Perl interface to the web service [http://SnipURL.com](http://snipurl.com). The service maintains a
 database of long URLs, each of which has a unique identifier or
 nickname. For more features, please visit [http://snipurl.com/features](http://snipurl.com/features).

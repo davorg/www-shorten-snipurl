@@ -7,7 +7,7 @@ use 5.006;
 use ExtUtils::MakeMaker;
 
 my %WriteMakefileArgs = (
-  "ABSTRACT" => "Perl interface to SnipURL.com",
+  "ABSTRACT" => "Perl interface to L<http://SnipURL.com>",
   "AUTHOR" => "Shashank Tripathi <shank\@shank.com>",
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => 0
