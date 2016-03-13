@@ -2,6 +2,8 @@
     - Cleaned up a bit
     - Standardized documentation a bit. Made sure links were present
     - added contributors
+    - Made our lack of confidence in this service known in the docs.
+    - turned off live testing as their site is too up-and-down to test.
 
 2.01    2015-07-18
     - Fixed tests.
