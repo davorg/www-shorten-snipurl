@@ -18,19 +18,17 @@ my %WriteMakefileArgs = (
   "NAME" => "WWW::Shorten::SnipURL",
   "PREREQ_PM" => {
     "Carp" => 0,
-    "Exporter" => 0,
     "HTTP::Request::Common" => 0,
     "Try::Tiny" => 0,
     "URI" => 0,
     "WWW::Shorten" => "3.08",
-    "base" => 0,
     "strict" => 0,
     "warnings" => 0
   },
   "TEST_REQUIRES" => {
     "Test::More" => "0.88"
   },
-  "VERSION" => "2.021",
+  "VERSION" => "2.022",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -39,13 +37,11 @@ my %WriteMakefileArgs = (
 
 my %FallbackPrereqs = (
   "Carp" => 0,
-  "Exporter" => 0,
   "HTTP::Request::Common" => 0,
   "Test::More" => "0.88",
   "Try::Tiny" => 0,
   "URI" => 0,
   "WWW::Shorten" => "3.08",
-  "base" => 0,
   "strict" => 0,
   "warnings" => 0
 );
