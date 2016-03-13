@@ -12,7 +12,7 @@
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
       "version" : 2
    },
-   "name" : "WWW-Shorten-Shorl",
+   "name" : "WWW-Shorten-SnipURL",
    "prereqs" : {
       "configure" : {
          "requires" : {
@@ -60,7 +60,7 @@
          "web" : "https://github.com/p5-shorten/www-shorten-snipurl"
       }
    },
-   "version" : "2.020",
+   "version" : "2.021",
    "x_contributors" : [
       "Chase Whitener <capoeirab@cpan.org>",
       "Dave Cross <davecross@cpan.org>"

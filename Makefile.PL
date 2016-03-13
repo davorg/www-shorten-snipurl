@@ -12,10 +12,10 @@ my %WriteMakefileArgs = (
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => 0
   },
-  "DISTNAME" => "WWW-Shorten-Shorl",
+  "DISTNAME" => "WWW-Shorten-SnipURL",
   "LICENSE" => "perl",
   "MIN_PERL_VERSION" => "5.006",
-  "NAME" => "WWW::Shorten::Shorl",
+  "NAME" => "WWW::Shorten::SnipURL",
   "PREREQ_PM" => {
     "Carp" => 0,
     "Exporter" => 0,
@@ -30,7 +30,7 @@ my %WriteMakefileArgs = (
   "TEST_REQUIRES" => {
     "Test::More" => "0.88"
   },
-  "VERSION" => "2.020",
+  "VERSION" => "2.021",
   "test" => {
     "TESTS" => "t/*.t"
   }
