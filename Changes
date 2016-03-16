@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+2.023   2016-03-16
     - updated the author tests
     - fixed list of contributors
 

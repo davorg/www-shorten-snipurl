@@ -63,7 +63,7 @@
          "web" : "https://github.com/p5-shorten/www-shorten-snipurl"
       }
    },
-   "version" : "2.022",
+   "version" : "2.023",
    "x_contributors" : [
       "Chase Whitener <capoeirab@cpan.org>",
       "Dave Cross <davecross@cpan.org>"

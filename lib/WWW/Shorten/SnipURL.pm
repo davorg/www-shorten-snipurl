@@ -11,7 +11,7 @@ use Try::Tiny qw(try catch);
 
 use base qw( WWW::Shorten::generic Exporter );
 our @EXPORT  = qw(makeashorterlink makealongerlink);
-our $VERSION = '2.022';
+our $VERSION = '2.023';
 $VERSION = eval $VERSION;
 
 sub makeashorterlink {
