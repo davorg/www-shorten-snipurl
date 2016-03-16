@@ -60,7 +60,7 @@ Shashank Tripathi shank@shank.com
 
 # CONTRIBUTORS
 
-- Chase Whitener capoeirab@cpan.org -- Current maintainer
+- Chase Whitener capoeirab@cpan.org
 - Dave Cross dave@perlhacks.com
 
 # COPYRIGHT AND LICENSE

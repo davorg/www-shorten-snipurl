@@ -107,9 +107,13 @@ Shashank Tripathi <shank@shank.com>
 
 =over
 
-=item Chase Whitener C<capoeirab@cpan.org> -- Current maintainer
+=item *
 
-=item Dave Cross C<dave@perlhacks.com>
+Chase Whitener C<capoeirab@cpan.org>
+
+=item *
+
+Dave Cross C<dave@perlhacks.com>
 
 =back
 
