@@ -2,10 +2,7 @@ use strict;
 use warnings;
 use Test::More;
 use Try::Tiny qw(try catch);
-
-BEGIN { use_ok('WWW::Shorten::SnipURL') or BAIL_OUT("Can't use!") };
-can_ok('WWW::Shorten::SnipURL', qw(makealongerlink makeashorterlink));
-can_ok('main', qw(makealongerlink makeashorterlink));
+use WWW::Shorten::SnipURL;
 
 my $url = 'http://code.mag-sol.com/WWW-Shorten/WWW-Shorten.1.95.tar.gz';
 my $prefix = 'http://snipurl.com/';

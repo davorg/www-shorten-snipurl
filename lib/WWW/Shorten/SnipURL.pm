@@ -5,7 +5,6 @@ use strict;
 use warnings;
 
 use Carp ();
-use URI;
 use HTTP::Request::Common 'POST';
 use Try::Tiny qw(try catch);
 

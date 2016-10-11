@@ -1,6 +1,9 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+    - Moved to Starter for Dist::Zilla
+    - Added 5.24 to Travis testing
+    - Moved prereqs into cpanfile
 
 2.023   2016-03-16
     - updated the author tests
