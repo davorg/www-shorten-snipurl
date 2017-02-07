@@ -4,8 +4,10 @@ Revision history for {{$dist->name}}
     - Moved to Starter for Dist::Zilla
     - Added 5.24 to Travis testing
     - Moved prereqs into cpanfile
+    - Add CONTRIBUTING.md to repository
+    - Add LICENSE to repository
 
-2.023   2016-03-16
+2.022   2016-03-16
     - updated the author tests
     - fixed list of contributors
 
